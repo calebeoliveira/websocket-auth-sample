@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Realtime demo</title>
+</head>
+<body>
+	<script src="http://localhost:8000/socket.io/socket.io.js"></script>
+	<script>
+		var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwiaWF0IjoxNDYxMjExOTQ2LCJleHAiOjE1MjQzMjcxNDZ9.Tf-wCxUtlWwZQPXuTTv7zZXgs0vvjJ_3jRAnZT1-7bkqBBAlFETepJ_k_JR-kmq6DN0akPsIjz6wkSfdyCQ-9Q';
+
+		var socket = io.connect('http://localhost:8000', {
+			query: 'token='+token
+		});
+		socket.on('notifications', function (data) {
+			console.log(data);
+		});
+		socket.on('error', function (data) {
+			console.error(data);
+		});
+	</script>
+</body>
+</html>
